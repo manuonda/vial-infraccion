@@ -30,7 +30,7 @@
   <input type="hidden" name="id" id="id" value="<?php if (isset($configuracion)) echo $configuracion->id_configuracion; ?>" />
         
 
-    
+  <!--  
  <div class="row">
  <div class="col-md-3">
  <div class="form-group" id="numero_acta-div">
@@ -48,11 +48,38 @@
                            value="<?php if (isset($configuracion)) echo $configuracion->serie; ?>"/>
                 </div> 
  </div>
+-->
  
+ <div class="row">
+ <div class="col-md-3">
+<div class="form-group" id="valor-div">
+<label class="control-label">Valores</label>
+<div class=" input-group bootstrap-touchspin">
+<select class="form-control requerido"  data-toggle="tooltip" id="id_valor_unidad" 
+ onchange="loadValor(event)" >
+<option value="">-- Seleccionar --</option>
+<?php foreach ($valores as $valor): ?>                                                                        
+<option id_valor_unidad="<?php echo $valor->id_valor;?>" value="<?php echo $valor->valor ?>">
+<?php echo $valor->valor; ?></option>
+<?php endforeach; ?>
+ </select>
+ </div>
+ <span class="span_none" id="valor-error"> Seleccione </span>
+ </div>
+ </div>
+ <div class="col-md-3">
+   <div class="form-group">
+    <input type="number" id="valor_unidad" />
+     <span class="span_none" id="valor-error-unidad"> Seleccione </span>
+
+   </div>
+
+ </div>
+</div>
 
 <!-- Acciones -->
 <div class="form-actions right">
-<button type="submit" class="btn green">
+<button type="button"  onClik="guardar()" class="btn green">
 <i class="fa fa-save"></i> Guardar
 </button>
 </div>
@@ -61,6 +88,39 @@
  </div>
 </div>
  </form>
+
+
+
+ <script type="text/javascript">
+       $(document).ready(function(){
+         $("#valor-error-unidad").hide();
+       }); 
+ 
+ function loadValor(event){
+   console.log(event);
+   const idSelect = event.target.id;
+   const value = event.target.value;
+   const idValorUnidad = event.target.options[event.target.selectedIndex].getAttribute('id_valor_unidad');
+   document.getElementById("valor_unidad").value= value;
+
+   debugger;
+ }
+
+ function guardar() {
+   const valorUnidad = document.getElementById("valor_unidad").value;
+   if ( valorUnidad === "") {
+      $("#valor-error-unidad").show();
+   } else {
+     //guardao los valores
+     $("#valor-error-unidad").hide();
+     //se debe enviar los datos al controller Configuraciones y pasar los datos
+      const event = document.getElementById("id_valor_unidad");
+      const idSelect = event.target.id;
+      const value = event.target.value;
+      const idValorUnidad = event.target.options[event.target.selectedIndex].getAttribute('id_valor_unidad');
+   }
+ }
+ </script>
           
 
                      

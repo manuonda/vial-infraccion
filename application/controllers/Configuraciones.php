@@ -11,6 +11,7 @@ class Configuraciones extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('configuracion_model');
         $this->load->model('configuracion_unidad_model');
+        $this->load->model('valor_model');
         $this->load->helper('url');
     }
 
@@ -27,6 +28,7 @@ class Configuraciones extends MY_Controller {
             $this->data['titulo']="Configuracion Valores";
             $this->data['filter']=$filter;
             $this->data['configuracion']=$this->configuracion_model->getByName('LEY');
+            $this->data['valores'] = $this->valor_model->get_all();
             $this->load->view('template', $this->data);
         } else {
             redirect('admin/login');
