@@ -1,0 +1,31 @@
+Tipo Tarjeta 
+------------------------
+
+ALTER TABLE infracciones.infracciones_pagos_cuotas ADD COLUMN id_tipo_tarjeta integer;
+CREATE TABLE infracciones.tipo_tarjeta
+(
+  id_tipo_tarjeta integer NOT NULL DEFAULT nextval('infracciones.tipo_tarjeta_seq'::regclass),
+  nombre character varying(255),
+  usuario_alta character varying(100),
+  usuario_modificacion character varying(100),
+  fecha_alta timestamp without time zone,
+  fecha_modificacion timestamp without time zone,
+  CONSTRAINT id_tipo_tarjeta PRIMARY KEY (id_tipo_tarjeta)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE infracciones.tipo_tarjeta
+  OWNER TO admin;
+  -- DROP SEQUENCE infracciones.tipo_tarjeta_seq;
+
+CREATE SEQUENCE infracciones.tipo_tarjeta_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 4
+  CACHE 1;
+ALTER TABLE infracciones.tipo_tarjeta_seq
+  OWNER TO admin;
+
+-----------------------------

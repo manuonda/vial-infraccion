@@ -1,0 +1,40 @@
+
+
+06/3/2020
+ALTER TABLE infracciones.infracciones_leyes ADD COLUMN descripcion_ley character varying(255);
+ALTER TABLE infracciones.infracciones_leyes ADD COLUMN texto_exhimido character varying(255);
+ALTER TABLE infracciones.infracciones_leyes ADD COLUMN texto_carece_exhimido character varying(255);
+ALTER TABLE infracciones.infracciones_leyes ADD COLUMN estado_exhimido character varying(100);
+
+
+// Script de datos de persona_establecer_involucrado
+update infracciones.infracciones set tipo_persona = 'PE' where persona_establecer_involucrado = 1;
+
+//  1 - Modificar la tabla de infracciones a dominio de 255 characteres .
+    2 - Se establecio lugar_hecho a text : el error estaba indicando alli
+    
+
+
+// VER UN SCRIPT PARA ACTUALIZAR LOS DATOS DE TIPO_PERSONA A AQUELLAS CUYO PERSONA_ESTABLECER_INVOLUCRADO == 1
+// VER LA PARTE DE PAGOS..
+
+
+1 - Ver que tipo_persona : ver si es un propietario o involucrado a establecer. Puesto que al asignar como tipo_persona =PJ 
+    en la tabla esta mostrando como persona juridica y no es correcto tendria que mostrar, la persona  a estatblecer como propietario. Se tendria que crear una columan especifica para persona juridica o persona fisica del involucrado.
+       
+
+
+
+TAREA NUMERO 1 : 3/6/2020
+---------------
+a ) SACAR LA PARTE DE EXHIMIDO Y COLOCAR EN UNA NUEVA TABLA 
+b ) REALIZAR UN SCRIPT PARA ACTUALIZAR LO QUE SE VENIA TRABJANDO.
+
+
+
+
+
+
+
+
+

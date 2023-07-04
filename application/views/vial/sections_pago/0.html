@@ -1,0 +1,164 @@
+<div id="modal_firmante_persona_juridica" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title mt-0">
+					<span id="title-firmante-persona-juridica"> Agregar Firmante - Persona Juridica
+					</span>
+				</h4>
+</div>
+<div class="modal-body">
+<div class="card">
+<div class="card-body">
+
+<input type="hidden" id="indexTablaFirmantePersonaJuridica">
+<input type="hidden" id="idFirmantePersonaJuridica">
+
+<div class="form-firmante-persona-juridica">
+
+<div class="row">
+
+<div class="form-group col-md-3">
+<label> C.U.I.T*</label>
+<input type="text" class="form-control" id="cuitCifFirmantePersonaJuridica">
+<font color="red" id="error-cuitCifFirmantePersonaJuridica" style="display : none ">
+Debe seleccionar un item de la lista.
+</font>
+</div>
+
+<!-- tipo documento identidad y numero documento  -->
+
+<div class="form-group col-md-3">
+<label for="firmantePersonaFisica.idConfTipoDocumentoIdentidad">
+Tipo de Documento
+</label>
+<select class="form-control select-list" id="idTipoDocumentoIdentidadFirmantePersonaJuridica">
+<option value="">
+Seleccionar
+</option>
+
+<option value="12">DNI</option>
+
+<option value="13">Pasaporte</option>
+
+<option value="14">Cédula de Identidad</option>
+
+</select>
+<font color="red" id="error-idTipoDocumentoIdentidadFirmantePersonaJuridica" style="display : none">
+Debe seleccionar un item de la lista.
+</font>
+</div>
+
+<div class="form-group col-md-3">
+<label for="firmantePersonaFisica.numeroDocumento">
+Numero Documento(*)
+ </label>
+ <input type="text" class="form-control" id="numeroDocumentoFirmantePersonaJuridica" maxlength="200">
+<font color="red" style="color: red ; display: none" id="error-numeroDocumentoFirmantePersonaJuridica">
+Este campo es obligatorio.
+</font>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-3">
+<label>Apellido(*)</label>
+<input type="text" id="apellidoFirmantePersonaJuridica" maxlength="200" class="form-control">
+<font color="red" style="color: red ; display : none" id="error-apellidoFirmantePersonaJuridica">
+Este campo es obligatorio.
+</font>
+</div>
+
+<div class="form-group col-md-3">
+<label>Nombre(*)</label>
+<input type="text" class="form-control" id="nombreFirmantePersonaJuridica" maxlength="200">
+<font color="red" style="color: red ; display: none" id="error-nombreFirmantePersonaJuridica">
+Este campo es obligatorio.
+</font>
+</div>
+
+<div class="form-group col-md-3">
+<label>Email(*)
+</label>
+<input type="email" class="form-control" maxlength="100" id="emailFirmantePersonaJuridica">
+<font color="red" style="color: red ; display : none" id="error-emailFirmantePersonaJuridica">
+Este campo es obligatorio.
+</font>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-3">
+<label>Caracter Legal</label>
+<select class="form-control select-list" id="idTipoCaracterFirmantePersonaJuridica">
+<option value="">
+Seleccionar
+</option>
+
+<option value="13">Caracter</option>
+
+<option value="15">Presidente</option>
+
+<option value="16">Representante Legal</option>
+
+</select>
+<font color="red" style="color: red ; display : none" id="error-idTipoCaracterFirmantePersonaJuridica">
+Este campo es obligatorio.
+</font>
+</div>
+
+ <div class="form-group col-md-4">
+ <div class="checkbox">
+ <label>
+ <input type="checkbox" id="aceptaUsoEmailFirmantePersonaJuridica">
+ <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+  &nbsp;&nbsp;
+ Acepto recibir notificaciones electrónicas al email declarado.
+</label>
+ </div>
+ </div>
+    
+</div>
+
+<font color="red" style="color: red ; display : none" id="error-mensage-firmante-persona-juridica">
+
+</font>
+
+
+<!--  end class form-firmante-persona-juridica -->
+</div>
+<br>
+<div class="row text-center" id="div-action-add-firmante-persona-juridica">
+<div class="col-md-6 text-center">
+<button type="button" class="btn btn-secondary btn-rounded waves-effect waves-light" onclick="cancelarFirmantePersonaJuridica();">
+<i class="fa fa-times mr-1" aria-hidden="true"></i>
+Cancelar
+</button>
+<button type="button" onclick="agregarFirmantePersonaJuridica()" class="btn btn-success btn-rounded waves-effect waves-light">
+<i class="fa fa-save"></i>&nbsp;
+Agregar
+</button>
+</div>
+</div>
+
+
+<!--  botones de accion de update del documento -->
+<div class="row" id="div-action-update-firmante-persona-juridica" style="display: none">
+<div class="col-md-3 text-left"></div>
+<div class="col-md-6 text-center">
+<button type="button" id="btnCancelarUpdateDocumentoElemento" onclick="cancelarFirmantePersonaJuridica();" class="btn btn-secondary btn-rounded waves-effect waves-light">
+<i class="fa fa-times mr-1" aria-hidden="true"></i>
+Cancelar
+</button>
+<button type="button" id="btnUpdateDocumentoElemento" onclick="agregarFirmantePersonaJuridica()" class="btn btn-success btn-rounded waves-effect waves-light">
+<i class="fa fa-save"></i>&nbsp;
+Actualizar
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
