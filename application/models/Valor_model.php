@@ -27,19 +27,12 @@ class Valor_model extends MY_Model {
      **/
     public function insert($data) {
         //Section - Acta
-        if(empty($data['nombre'])) $data['nombre'] = null;
-        if(empty($data['valor'])) $data['valor'] = null;
-        if(empty($data['year'])) $data['year']=null;
-        if(empty($data['estado'])) $data['estado']=null;
-        if(empty($data['estado'])) $data['estado'] = null;
-
+     
+     
         $this->db->trans_begin();
         $carga = array(
-            //Section -  Lugar
-            
-            'nombre' => $data['nombre'],
             'valor' => $data['valor'],
-            'year'=>$data['year'],
+            'year'=>date('Y-m-d'),
             'estado'=>$data['estado'],
             'usuario_alta' => $this->session->userdata('user_id'),
             'fecha_alta' => date('Y-m-d H:i:s')
@@ -63,25 +56,14 @@ class Valor_model extends MY_Model {
       **/
     public function update($data) {
        
-         //Section - Acta
-        if(empty($data['nombre'])) $data['nombre'] = null;
-        if(empty($data['valor'])) $data['valor'] = null;
-        if(empty($data['year'])) $data['year']=null;
-        if(empty($data['estado'])) $data['estado']=null;
-      
         $this->db->trans_begin();
         $carga = array(
-            //Section -  Lugar
-            
-            'nombre' => $data['nombre'],
             'valor' => $data['valor'],
-            'year'=>$data['year'],
-            'estado'=>$data['estado'],
+            'estado' => $data['estado'],
             'usuario_modificacion' => $this->session->userdata('user_id'),
             'fecha_modificacion' => date('Y-m-d H:i:s')
         );
-        
-        $this->db->where($this->id, $data['id']);
+        $this->db->where($this->id, $data['id_valor']);
         $this->db->update($this->table, $carga);
 
     
@@ -91,9 +73,14 @@ class Valor_model extends MY_Model {
             return -1;
         }else {
             $this->db->trans_commit();
-            return $data['id'];
+            return $data['id_valor'];
         }
     } 
+
+
+    public function resetEstados(){
+
+    }
 
 
 }

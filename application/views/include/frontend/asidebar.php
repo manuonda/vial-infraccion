@@ -39,7 +39,18 @@
                         <li>
                               <ul>
                                 <li class="treeview">
-                                         <a href="<?php echo base_url().'configuraciones/index';?>"><i class="fa fa-circle-o"></i>Configuracion Valores
+                                         <a href="<?php echo base_url().'configuraciones/index';?>"><i class="fa fa-circle-o"></i>Configurar Valor Unidad
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                      </a>
+                                    </li>
+                             </ul>
+                        </li>
+                         <li>
+                              <ul>
+                                <li class="treeview">
+                                         <a href="<?php echo base_url().'configuraciones/create';?>"><i class="fa fa-circle-o"></i>Crear Valor Unidad
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>

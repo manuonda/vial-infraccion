@@ -1,68 +1,95 @@
-<div class="portlet box blue">
-    <div class="portlet-title">
-        <div class="caption">
-            <i class="fa fa-file-text-o"></i><?php echo $subtitulo ?> </div>
-    </div>
 
-    
-    <div class="portlet-body form">
-        <!-- BEGIN FORM-->
+  <?php echo form_open_multipart('configuraciones/guardar', ' id="formulario" class="horizontal-form"'); ?>
+ <div class="row"> 
+ <div class="col-md-12">
+ <!-- BEGIN EXAMPLE TABLE PORTLET-->
+ <div class="portlet light bordered">
+ <div class="portlet-title">
+ <div class="caption font-dark">
+ <i class="icon-settings font-dark"></i>
+ <span class="caption-subject bold uppercase"> Crear Valor Unidad </span>
+ </div>
+ </div>
+ 
 
-         <?php if(isset($message)) {
-              echo $message
-         } ?>
+ <div class="portlet-body"> 
+ <div class="row">
+ <div class="col-md-3">
+  <label>Valor Unidad</label>
+   <div class="form-group">
+    <input type="number" id="valor_unidad" />
+     <span class="span_none" id="valor-error-unidad" style="color: red; font-size: 23;" > Debe ingresar valor </span>
+   </div>
 
-        <?php echo form_open_multipart('configuraciones/guardar', ' id="formulario" class="horizontal-form"'); ?>
-           <div class="form-body">                    
-            <h3 class="form-section">Valores Globales</h3>
+ </div>
+  <div class="col-md-3">
+  <label>Estado</label>
+   <div class="form-group">
+    <input type="checkbox" id="estado_unidad" />
+     <span class="span_none" id="estado-error-unidad" style="color:red;  font-size:23"> Seleccione </span>
+   </div>
 
-            <input type="hidden" name="id" id="id" value="<?php if (isset($configuracion)) echo $configuracion->id_configuracion; ?>" />
-        
+ </div>
+</div>
+
+<!-- Acciones -->
+<div class="form-actions right">
+<button type="button"  onclick="guardar()" class="btn green">
+<i class="fa fa-save"></i> Guardar
+</button>
+</div>
+ </div>
+ </div>
+ </div>
+</div>
+ </form>
+
+
+
+ <script type="text/javascript">
+       $(document).ready(function(){
+         $("#id-error-unidad").hide();
+         $("#estado-error-unidad").hide();
+         $("#valor-error-unidad").hide();
+       }); 
+ 
+
+
+ function guardar() {
+    $("#estado-error-unidad").hide();
+    $("#valor-error-unidad").hide();
+   const valorUnidad = document.getElementById("valor_unidad").value;
+   const estadoUnidad = document.getElementById("estado_unidad").checked;
+   debugger;
+   if ( valorUnidad === "") {
+      $("#valor-error-unidad").show();
+      return;
+   } else {
+     //guardao los valores
+      $("#valor-error-unidad").hide();
+     //se debe enviar los datos al controller Configuraciones y pasar los datos
+       var data = {
+                   'valorUnidad':valorUnidad,
+                   'estadoUnidad':estadoUnidad ? 1 : 0
+                  };
+
+
+      $.post('<?php echo base_url(); ?>/configuraciones/post_guardar/', 
+          JSON.stringify(data),
+          function(response) {
+             console.log("response=> "+JSON.stringify(response));
+          if(response.status=='OK'){
+                alert("Se agrego el valor de Unidad");
+                window.location.reload("configuraciones/index");
+          }else{
+                alert("Se Produjo un Error");
+          }
+      }, 'json');
+    }
+   }
+ 
+ </script>
           
-            <div class="row">
-               <div class="col-md-3">
-                    <label class="control-label">Valor UF</label>
-                    <input class="form-control" placeholder="0.00" type="text" name="valor"
-                           value="<?php if (isset($configuracion)) echo $configuracion->valor; ?>"/>
-                </div>
-                 
-                 <div class="col-md-3">
-                    <label class="control-label">Serie</label>
-                    <input class="form-control" placeholder="0.00" type="text" name="valor"
-                           value="<?php if (isset($configuracion)) echo $configuracion->serie; ?>"/>
-                </div> 
-            
-            </div>
 
-
-            <!-- Acciones -->
-            <div class="form-actions right">
-                
-                <a href="<?php echo base_url();?>inicio" class="btn default"> Cerrar</a>
-                <?php if (!isset($id)) : ?>
-                    <button type="submit" class="btn green">
-                        <i class="fa fa-plus"></i> Guardar
-                    </button>
-                <?php else: ?>
-                   
-                    <button type="submit" class="btn blue">
-                        <i class="fa fa-save"></i> Actualizar
-                    </button>
-                <?php endif; ?>
-            </div>
-
-
-            </form>
-           
-           
-             <!-- /.modal-content -->
-             </div>
-             <!-- /.modal-dialog -->
-             </div>
-             <!-- /.modal -->
-            <!-- end modal -->
-        </div>
-
-
-
-    </div>
+                     
+     
