@@ -65,6 +65,10 @@ class Configuraciones extends MY_Controller {
         $this->data['fecha_modificacion'] = date('H:i');
         
             
+        if ($estadoUnidad == "1"){
+            $this->valor_model->resetEstados();
+        }
+               
         $idReturn = $this->valor_model->update($this->data);
         
         //Redireccionamos a la pagina si se creo 
@@ -108,6 +112,9 @@ class Configuraciones extends MY_Controller {
         $this->data['valor'] =  $valorUnidad;
         $this->data['estado'] = $estadoUnidad;
         
+        if ($estadoUnidad == "1"){
+            $this->valor_model->resetEstados();
+        }
             
         $idReturn = $this->valor_model->insert($this->data);
         

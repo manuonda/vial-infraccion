@@ -79,7 +79,18 @@ class Valor_model extends MY_Model {
 
 
     public function resetEstados(){
-
+        $this->db->select("*");
+        $this->db->from($this->table);
+        $query = $this->db->get();
+        $result = $query->result();
+        
+        foreach ($result as $key => $value) {
+            
+            $data['id_valor'] =  $value->id_valor;
+            $data['valor']  =  $value->valor;
+            $data['estado'] =  0;
+            $this->update($data);
+         } 
     }
 
 
